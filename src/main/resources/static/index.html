@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Welcome to the GENAI</h1>
+<p>This is a simple HTML page served by Spring Boot.</p>
+
+<form id = "queryForm">
+    <label for="prompt">Your Query</label>
+    <input type="text" id="prompt" name="prompt" required>
+    <button type="submit">Submit</button>
+</form>
+
+    <textarea id = "genaiResponse" rows="60" cols="70" placeholder="Response will appear here...">
+
+    </textarea>
+
+<script>
+    document.getElementById("queryForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const prompt = document.getElementById("prompt").value;
+
+        fetch("http://localhost:8787/gemini/generate/text", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ prompt: prompt })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById("genaiResponse").value = data;
+
+            console.log("Response from server: " + data);
+        })
+        .catch(error => {
+            console.error("There was a problem with the fetch operation:", error);
+        });
+    });
+</script>
+</body>
+</html>
