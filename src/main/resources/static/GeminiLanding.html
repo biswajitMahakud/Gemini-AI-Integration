@@ -148,7 +148,7 @@
       addMessage("Typing...", "bot");
 
       try {
-        const response = await fetch("http://localhost:8798/gemini/generate/text", {
+        const response = await fetch("http://13.202.88.206:8798/gemini/generate/text", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ prompt: userMsg })

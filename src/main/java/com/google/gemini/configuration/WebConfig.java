@@ -13,7 +13,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Allow all endpoints
-                        .allowedOriginPatterns("http://localhost:63342") // Allow specific origin
+                        .allowedOriginPatterns("https://gemini-ai-integration-static-bucket.s3.ap-south-1.amazonaws.com/static/GeminiLanding.html") // Allow specific origin
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allow specific methods
                         .allowedHeaders("*") // Allow all headers
                         .allowCredentials(true); // Allow credentials if needed
