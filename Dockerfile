@@ -1,5 +1,9 @@
-FROM openjdk:17
-COPY target/app.jar /usr/app/app.jar
-WORKDIR /usr/app/
+FROM eclipse-temurin:17-jdk-jammy
+
+WORKDIR /app
+
+COPY target/*.jar app.jar
+
 EXPOSE 8798
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+ENTRYPOINT ["java","-jar","app.jar"]
