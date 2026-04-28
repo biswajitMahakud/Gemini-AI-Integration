@@ -12,11 +12,10 @@ public class WebConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**") // Allow all endpoints
-                        .allowedOriginPatterns("https://gemini-ai-integration-static-bucket.s3.ap-south-1.amazonaws.com/static/GeminiLanding.html") // Allow specific origin
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allow specific methods
-                        .allowedHeaders("*") // Allow all headers
-                        .allowCredentials(true); // Allow credentials if needed
+                registry.addMapping("/**")
+                        .allowedOrigins("http://gemini-ai-integration-static-bucket.s3-website-ap-south-1.amazonaws.com")
+                        .allowedMethods("*")
+                        .allowedHeaders("*");
             }
         };
     }
