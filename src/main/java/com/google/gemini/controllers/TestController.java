@@ -6,7 +6,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
 
+@CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/api")
 public class TestController {
     GenerativeTextService generativeTextService;
     public TestController(GenerativeTextService service){
